@@ -323,6 +323,14 @@ def main():
     test_node()
     test_npx()
     args = parse_args()
+    
+    # Define color codes at the beginning to avoid UnboundLocalError
+    cyan = "\033[96m"
+    red = "\033[91m"
+    yellow = "\033[93m"
+    white = "\033[97m"
+    gray = "\033[90m"
+    reset = "\033[0m"
 
     # Create event for clean refresh timing
     stop_event = threading.Event()
@@ -446,13 +454,7 @@ def main():
                 # If no burn rate or tokens already depleted, use reset time
                 predicted_end_time = reset_time
 
-            # Color codes
-            cyan = "\033[96m"
-            red = "\033[91m"
-            yellow = "\033[93m"
-            white = "\033[97m"
-            gray = "\033[90m"
-            reset = "\033[0m"
+            # Color codes already defined at the beginning of main()
 
             # Display header
             screen_buffer.extend(print_header())
